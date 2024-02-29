@@ -50,7 +50,7 @@ const Calculator = () => {
                 cwif: <span className="font-semibold">${cwifPrice}</span>
               </p>
               <p className="text-lg text-green-600">
-                Total Value: <span className="font-bold">{totalValue}</span>
+                Total Value: <span className="font-bold">${totalValue}</span>
               </p>
             </div>
           </>
