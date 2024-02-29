@@ -55,7 +55,10 @@ const Calculator = () => {
             </div>
           </>
         ) : (
-          <p className="text-md text-red-500">Price information not available</p>
+          <>
+            <p className="text-md text-red-500">Price information not available</p>
+            <p className="text-md text-red-500">Please try again</p>
+          </>
         )}
       </div>
       <CoinGeckoAttribution />
