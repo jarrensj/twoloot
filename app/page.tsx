@@ -8,6 +8,9 @@ export default function Home() {
       <p className="text-lg text-center">
         See the loot from the Two
       </p>
+      <p className="text-sm text-center text-gray-600 mb-2">
+        Disclaimer: This is not financial advice. You are responsible for your own decisions. 
+      </p>
       <Calculator />
     </main>
   );
