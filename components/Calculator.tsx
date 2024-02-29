@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import CoinGeckoAttribution from './CoinGeckoAttribution';
+import Image from 'next/image';
 
 const Calculator = () => {
   const [cwifPrice, setCwifPrice] = useState<number | null>(0);
@@ -34,36 +35,44 @@ const Calculator = () => {
     fetchData();
   }, []);
 
+  const cwifValue = cwifPrice !== null ? (cwifPrice * cwifAllo).toFixed(2) : 'N/A';
   const totalValue = cwifPrice !== null ? (cwifPrice * cwifAllo).toFixed(2) : 'N/A';
-
 
   return (
     <>
-      <div className="mx-auto px-4 py-6 text-center mb-4 bg-gray-100 rounded-lg shadow max-w-4xl">
+      <div className="mx-auto px-6 py-8 mb-6 bg-white rounded-xl shadow-lg max-w-xl border border-gray-200">
         {isLoading ? (
-          <p className="text-lg text-blue-500">Loading...</p>
+          <div className="flex justify-center items-center">
+            <p className="text-lg text-blue-600">Loading...</p>
+          </div>
         ) : cwifPrice !== null ? (
-          <>
-            <div className="text-gray-700">
-              <p className="text-md">20 million $cwif</p>
-              <p className="text-md">
+          <div className="space-y-4">
+            <div className="flex items-center space-x-4">
+              <Image src="https://assets.coingecko.com/coins/images/35267/large/download_%283%29.png?1708021220" alt="cwif" width={60} height={60} className="rounded-md" />
+              <div className="flex flex-col">
+                <span className="text-xl font-semibold text-gray-800">cwif</span>
+                <span className="text-md text-gray-500">20 mil $cwif</span>
+              </div>
+            </div>
+            <div className="pt-4 border-t border-gray-100">
+              <p className="text-md text-gray-600">
                 cwif: <span className="font-semibold">${cwifPrice}</span>
               </p>
-              <p className="text-lg text-green-600">
-                Total Value: <span className="font-bold">${totalValue}</span>
+              <p className="text-lg text-green-500 font-bold">
+                ${cwifValue}
               </p>
             </div>
-          </>
+          </div>
         ) : (
-          <>
+          <div className="text-center">
             <p className="text-md text-red-500">Price information not available</p>
             <p className="text-md text-red-500">Please try again</p>
-          </>
+          </div>
         )}
       </div>
       <CoinGeckoAttribution />
     </>
-  );
-};
+  );  
+}
 
 export default Calculator;
