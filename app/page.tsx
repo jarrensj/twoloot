@@ -20,7 +20,7 @@ export default function Home() {
       </main>
       <footer className="w-full text-center p-4">
         <p className="text-sm text-gray-500">
-          Preorder the Two <a href="https://solanamobile.com/refer/jarrensj" className="underline text-blue-600 hover:text-blue-800" target="_blank">here</a>. This is a referral link.
+          Pre-order the Two <a href="https://solanamobile.com/refer/jarrensj" className="underline text-blue-600 hover:text-blue-800" target="_blank">here</a>. This is a referral link.
         </p>
       </footer>
     </div>
