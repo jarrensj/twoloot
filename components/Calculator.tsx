@@ -10,11 +10,14 @@ const Calculator = () => {
   const [cwifPrice, setCwifPrice] = useState<PriceState>(null);
   const [mewPrice, setMewPrice] = useState<PriceState>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   const cwifAllocation: number = 20000000; // 20 million
   const mewAllocation: number = 37600; // 37,600
 
   useEffect(() => {
+    setIsLoading(true);
+    setError(null);
     const fetchData = async () => {
       try {
         const response = await fetch('/api/coins');
@@ -26,8 +29,7 @@ const Calculator = () => {
         setMewPrice(data['cat-in-a-dogs-world']?.usd ?? null);
       } catch (error) {
         console.error('Error fetching prices:', error);
-        setCwifPrice(null);
-        setMewPrice(null);
+        setError('Failed to fetch data. Please try again.');
       } finally {
         setIsLoading(false);
       }
@@ -48,6 +50,10 @@ const Calculator = () => {
         {isLoading ? (
           <div className="flex justify-center items-center">
             <p className="text-lg text-blue-600">Loading...</p>
+          </div>
+        ) : error ? (
+          <div className="text-center">
+            <p className="text-lg text-red-500">{error}</p>
           </div>
         ) : (
           <>
