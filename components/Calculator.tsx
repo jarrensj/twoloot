@@ -8,12 +8,14 @@ type PriceState = number | null;
 
 const Calculator = () => {
   const [cwifPrice, setCwifPrice] = useState<PriceState>(null);
+  const [iq50Price, setIq50Price] = useState<PriceState>(null);
   const [mewPrice, setMewPrice] = useState<PriceState>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   const cwifAllocation: number = 20000000; // 20 million
   const mewAllocation: number = 37600; // 37,600
+  const iq50Allocation: number = 800000; // 800,000
 
   useEffect(() => {
     setIsLoading(true);
@@ -27,6 +29,7 @@ const Calculator = () => {
         const data = await response.json();
         setCwifPrice(data['catwifhat-2']?.usd ?? null);
         setMewPrice(data['cat-in-a-dogs-world']?.usd ?? null);
+        setIq50Price(data['iq50']?.usd ?? null);
       } catch (error) {
         console.error('Error fetching prices:', error);
         setError('Failed to fetch data. Please try again.');
@@ -40,7 +43,8 @@ const Calculator = () => {
   const totalValue = () => {
     const cwifTotal = cwifPrice ? cwifPrice * cwifAllocation : 0;
     const mewTotal = mewPrice ? mewPrice * mewAllocation : 0;
-    const sum = cwifTotal + mewTotal;
+    const iq50Total = iq50Price ? iq50Price * iq50Allocation : 0;
+    const sum = cwifTotal + mewTotal + iq50Total;
     return sum !== 0 ? sum.toFixed(2) : 'N/A';
   };
 
@@ -72,6 +76,25 @@ const Calculator = () => {
                   </p>
                   <p className="text-lg text-green-500 font-bold">
                     ${mewPrice ? (mewPrice * mewAllocation).toFixed(2) : 'N/A'}
+                  </p>
+                </div>
+              </div>
+            )}
+            {iq50Price !== null && (
+              <div className="space-y-4 pt-4 border-t border-gray-100">
+                <div className="flex items-center space-x-4">
+                  <Image src="https://assets.coingecko.com/coins/images/36184/large/AbVsOUMX_400x400.jpg?1710758729" alt="mew" width={60} height={60} className="rounded-md" />
+                  <div className="flex flex-col">
+                    <span className="text-xl font-semibold text-gray-800">iq50</span>
+                    <span className="text-md text-gray-500">800,000 $iq50</span>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-md text-gray-600">
+                    iq50: <span className="font-semibold">${iq50Price}</span>
+                  </p>
+                  <p className="text-lg text-green-500 font-bold">
+                    ${iq50Price ? (iq50Price * iq50Allocation).toFixed(2) : 'N/A'}
                   </p>
                 </div>
               </div>
