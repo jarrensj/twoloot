@@ -57,25 +57,6 @@ const Calculator = () => {
           </div>
         ) : (
           <>
-            {cwifPrice !== null && (
-              <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <Image src="https://assets.coingecko.com/coins/images/35267/large/download_%283%29.png?1708021220" alt="cwif" width={60} height={60} className="rounded-md" />
-                  <div className="flex flex-col">
-                    <span className="text-xl font-semibold text-gray-800">cwif</span>
-                    <span className="text-md text-gray-500">20 mil $cwif</span>
-                  </div>
-                </div>
-                <div className="pt-4 border-t border-gray-100">
-                  <p className="text-md text-gray-600">
-                    cwif: <span className="font-semibold">${cwifPrice}</span>
-                  </p>
-                  <p className="text-lg text-green-500 font-bold">
-                    ${cwifPrice ? (cwifPrice * cwifAllocation).toFixed(2) : 'N/A'}
-                  </p>
-                </div>
-              </div>
-            )}
             {mewPrice !== null && (
               <div className="space-y-4 pt-4 border-t border-gray-100">
                 <div className="flex items-center space-x-4">
@@ -91,6 +72,25 @@ const Calculator = () => {
                   </p>
                   <p className="text-lg text-green-500 font-bold">
                     ${mewPrice ? (mewPrice * mewAllocation).toFixed(2) : 'N/A'}
+                  </p>
+                </div>
+              </div>
+            )}
+            {cwifPrice !== null && (
+              <div className="space-y-4">
+                <div className="flex items-center space-x-4">
+                  <Image src="https://assets.coingecko.com/coins/images/35267/large/download_%283%29.png?1708021220" alt="cwif" width={60} height={60} className="rounded-md" />
+                  <div className="flex flex-col">
+                    <span className="text-xl font-semibold text-gray-800">cwif</span>
+                    <span className="text-md text-gray-500">20 mil $cwif</span>
+                  </div>
+                </div>
+                <div className="pt-4 border-t border-gray-100">
+                  <p className="text-md text-gray-600">
+                    cwif: <span className="font-semibold">${cwifPrice}</span>
+                  </p>
+                  <p className="text-lg text-green-500 font-bold">
+                    ${cwifPrice ? (cwifPrice * cwifAllocation).toFixed(2) : 'N/A'}
                   </p>
                 </div>
               </div>
