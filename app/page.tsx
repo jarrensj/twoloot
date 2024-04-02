@@ -22,6 +22,9 @@ export default function Home() {
         <p className="text-md text-gray-600">
           <Link href="https://solanamobile.com/refer/jarrensj" className="font-medium underline text-blue-600 hover:text-blue-800" target="_blank" rel="noopener noreferrer">Pre-order the Two here</Link>. This is a referral link.
         </p>
+        <p className="text-sm text-gray-500">
+          code by <Link href="https://kwaji.com" className="font-medium underline text-blue-600 hover:text-blue-800" target="_blank" rel="noopener noreferrer">kwaji</Link>
+        </p>
       </footer>
     </div>
   );
