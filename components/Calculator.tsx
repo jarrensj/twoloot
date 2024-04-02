@@ -118,6 +118,12 @@ const Calculator = () => {
                 </div>
               </div>
             )}
+            <div className="pt-8 border-t border-gray-100">
+            <div className="text-center">
+              <span className="text-xl font-semibold text-gray-800">Total Value</span>
+              <p className="text-2xl text-green-500 font-bold mt-2">${totalValue()}</p>
+            </div>
+          </div>
           </>
         )}
       </div>
