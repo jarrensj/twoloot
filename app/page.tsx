@@ -11,7 +11,7 @@ export default function Home() {
           Explore the loot from the Two.
         </p>
         <p className="text-md text-center text-gray-600 mb-1">
-          Disclaimer: This is not financial advice. You are responsible for your own decisions.
+          Disclaimer: Not financial advice. You are responsible for your own decisions and losses.
         </p>
         <p className="text-sm text-center text-gray-500 mb-6">
           Some items may no longer be available or may depend on past snapshots.
