@@ -3,7 +3,7 @@
  */
 const nextConfig = {
   images: {
-    domains: ['assets.coingecko.com'],
+    domains: ['assets.coingecko.com', 'coin-images.coingecko.com'],
   },
 };
 

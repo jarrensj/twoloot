@@ -6,7 +6,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
   const url = 'https://api.coingecko.com/api/v3/simple/price';
 
   try {
-    const response = await fetch(`${url}?ids=solana,catwifhat-2,cat-in-a-dogs-world,iq50&vs_currencies=usd&x-api-key=${apiKey}`);
+    const response = await fetch(`${url}?ids=solana,catwifhat-2,cat-in-a-dogs-world,iq50,wuffi,maneki,happycat-2&vs_currencies=usd&x-api-key=${apiKey}`);
     if (!response.ok) {
       throw new Error(`Error: ${response.status}`);
     }

@@ -1,10 +1,11 @@
 import Calculator from "@/components/Calculator";
-import Image from "next/image";
-import Link from "next/link";
+import Footer from "@/components/Footer";
+import Banner from "@/components/Banner";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50">
+    <div className="flex min-h-screen flex-col bg-gray-50">
+      <Banner />
       <main className="flex flex-col items-center p-10 rounded-lg shadow-lg bg-white m-4">
         <h1 className="text-5xl font-bold text-gray-800 mb-4">Two Loot</h1>
         <p className="text-xl text-center text-gray-700 mb-2">
@@ -18,14 +19,7 @@ export default function Home() {
         </p>
         <Calculator />
       </main>
-      <footer className="w-full text-center p-6 mt-auto">
-        <p className="text-md text-gray-600">
-          <Link href="https://solanamobile.com/refer/jarrensj" className="font-medium underline text-blue-600 hover:text-blue-800" target="_blank" rel="noopener noreferrer">Pre-order the Two here</Link>. This is a referral link.
-        </p>
-        <p className="text-sm text-gray-500">
-          code by <Link href="https://kwaji.com" className="font-medium underline text-blue-600 hover:text-blue-800" target="_blank" rel="noopener noreferrer">kwaji</Link>
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 }
