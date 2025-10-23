@@ -19,8 +19,14 @@ export default function RedemptionsPage() {
           ← Back to Home
         </Link>
         <h1 className="text-5xl font-bold text-gray-800 mb-4">Redemptions / Campaigns</h1>
-        <p className="text-xl text-center text-gray-700 mb-6">
+        <p className="text-xl text-center text-gray-700 mb-2">
           Redemptions and campaigns available for Seeker holders.
+        </p>
+        <p className="text-md text-center text-gray-600 mb-1">
+          Disclaimer: You are responsible for your own actions and decisions.
+        </p>
+        <p className="text-sm text-center text-gray-500 mb-6">
+          We are not responsible for third-party links or redemption terms. Always verify sources. Everything is at your own risk. We are not liable for any losses or damages.
         </p>
       </main>
       <Redemptions />
