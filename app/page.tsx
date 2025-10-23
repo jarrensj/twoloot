@@ -1,6 +1,7 @@
 import Calculator from "@/components/Calculator";
 import Footer from "@/components/Footer";
 import Banner from "@/components/Banner";
+import Redemptions from "@/components/Redemptions";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         </p>
         <Calculator />
       </main>
+      <Redemptions />
       <Footer />
     </div>
   );
