@@ -1,7 +1,7 @@
 import Calculator from "@/components/Calculator";
 import Footer from "@/components/Footer";
 import Banner from "@/components/Banner";
-import Redemptions, { hasActiveRedemptions } from "@/components/Redemptions";
+import { hasActiveRedemptions } from "@/components/Redemptions";
 
 export default function Home() {
   const showRedemptionsBanner = hasActiveRedemptions();
@@ -10,7 +10,7 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-gray-50">
       <Banner 
         text={showRedemptionsBanner ? "🎁 Active Redemptions Available - Click to View" : "missing anything? let us know"}
-        href={showRedemptionsBanner ? "#redemptions" : "https://discord.gg/omakase"}
+        href={showRedemptionsBanner ? "/redemptions" : "https://discord.gg/omakase"}
         isExternal={!showRedemptionsBanner}
       />
       <main className="flex flex-col items-center p-10 rounded-lg shadow-lg bg-white m-4">
@@ -24,9 +24,6 @@ export default function Home() {
         <p className="text-sm text-center text-gray-500 mb-6">
           Some items may no longer be available or may depend on past snapshots.
         </p>
-      </main>
-      <Redemptions />
-      <main className="flex flex-col items-center p-10 rounded-lg shadow-lg bg-white m-4">
         <Calculator />
       </main>
       <Footer />

@@ -23,7 +23,7 @@ export const hasActiveRedemptions = () => {
 const Redemptions = () => {
 
   return (
-    <div id="redemptions" className="w-full max-w-4xl mx-auto mt-8 mb-8 scroll-mt-4">
+    <div className="w-full max-w-4xl mx-auto mt-8 mb-8">
       <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Active Redemptions</h2>
       <div className="space-y-4">
         {redemptions.map((redemption, index) => (
