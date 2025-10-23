@@ -7,18 +7,23 @@ interface Redemption {
   isActive: boolean;
 }
 
+export const redemptions: Redemption[] = [
+  {
+    title: "Seeker x Moonbirds SBT",
+    description: "open to Seeker owners as well as Moonbirds, Mythics, and Oddities holders",
+    sourceUrl: "https://x.com/moonbirds/status/1981027879514161261?s=46",
+    isActive: true
+  }
+];
+
+export const hasActiveRedemptions = () => {
+  return redemptions.some(r => r.isActive);
+};
+
 const Redemptions = () => {
-  const redemptions: Redemption[] = [
-    {
-      title: "Seeker x Moonbirds SBT",
-      description: "open to Seeker owners as well as Moonbirds, Mythics, and Oddities holders",
-      sourceUrl: "https://x.com/moonbirds/status/1981027879514161261?s=46",
-      isActive: true
-    }
-  ];
 
   return (
-    <div className="w-full max-w-4xl mx-auto mt-8 mb-8">
+    <div id="redemptions" className="w-full max-w-4xl mx-auto mt-8 mb-8 scroll-mt-4">
       <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Active Redemptions</h2>
       <div className="space-y-4">
         {redemptions.map((redemption, index) => (
