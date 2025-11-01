@@ -31,7 +31,7 @@ const Redemptions = () => {
       <h2 className="text-3xl font-bold mb-6 text-center">Active Redemptions</h2>
       <div className="space-y-4">
         {redemptions.map((redemption, index) => (
-          <Card key={index} className="hover:shadow-lg transition-shadow duration-200">
+          <Card key={index} className="shadow-xl hover:shadow-2xl transition-shadow duration-200">
             <CardHeader>
               <div className="flex items-center gap-3">
                 <CardTitle className="text-xl">

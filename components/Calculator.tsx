@@ -86,7 +86,7 @@ const Calculator = () => {
 
   return (
     <>
-      <Card className="mx-auto mb-6 max-w-xl">
+      <Card className="mx-auto mb-6 max-w-xl shadow-xl">
         <CardContent className="pt-6">
           {isLoading ? (
             <div className="space-y-4">
@@ -101,30 +101,35 @@ const Calculator = () => {
             </div>
           ) : (
             <>
-              <div className="space-y-6">
+              <div className="text-center py-4">
+                <p className="text-sm text-muted-foreground mb-1">Total Value</p>
+                <p className="text-4xl font-bold text-green-600">${totalValue()}</p>
+              </div>
+              <Separator className="my-6" />
+              <div className="space-y-4">
                 {getSortedCoins().map((coin, index) => (
                   <div key={coin.id}>
-                    {index > 0 && <Separator className="mb-6" />}
-                    <div className="space-y-3">
-                      <div className="flex items-center space-x-4">
-                        <Image 
-                          src={coin.image} 
-                          alt={coin.id} 
-                          width={60} 
-                          height={60} 
-                          className="rounded-md border" 
-                        />
-                        <div className="flex flex-col flex-1">
-                          <span className="text-xl font-semibold capitalize">{coin.id}</span>
-                          <span className="text-sm text-muted-foreground">
-                            {coin.allocation.toLocaleString()} ${coin.id}
+                    {index > 0 && <Separator className="my-4" />}
+                    <div className="flex items-center gap-4">
+                      <Image 
+                        src={coin.image} 
+                        alt={coin.id} 
+                        width={48} 
+                        height={48} 
+                        className="rounded-full border-2 flex-shrink-0" 
+                      />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-baseline gap-2 mb-1">
+                          <h3 className="text-lg font-semibold capitalize">{coin.id}</h3>
+                          <span className="text-xs text-muted-foreground">
+                            ${coin.price}
                           </span>
                         </div>
-                      </div>
-                      <div className="pl-[76px]">
-                        <p className="text-sm text-muted-foreground">
-                          Price: <span className="font-semibold text-foreground">${coin.price}</span>
+                        <p className="text-sm text-muted-foreground truncate">
+                          {coin.allocation.toLocaleString()} ${coin.id}
                         </p>
+                      </div>
+                      <div className="text-right flex-shrink-0">
                         <p className="text-xl font-bold text-green-600">
                           ${((coin.price ?? 0) * coin.allocation).toFixed(2)}
                         </p>
@@ -132,11 +137,6 @@ const Calculator = () => {
                     </div>
                   </div>
                 ))}
-              </div>
-              <Separator className="my-6" />
-              <div className="text-center pt-2">
-                <CardTitle className="text-xl mb-2">Total Value</CardTitle>
-                <p className="text-3xl font-bold text-green-600">${totalValue()}</p>
               </div>
             </>
           )}
