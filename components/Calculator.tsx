@@ -102,8 +102,8 @@ const Calculator = () => {
           ) : (
             <>
               <div className="text-center py-4">
-                <p className="text-sm text-muted-foreground mb-1">Total Value</p>
-                <p className="text-4xl font-bold text-green-600">${totalValue()}</p>
+                <p className="text-lg text-muted-foreground mb-2 font-bold text-gray-800">Total Value</p>
+                <p className="text-5xl font-bold text-green-600">${totalValue()}</p>
               </div>
               <Separator className="my-6" />
               <div className="space-y-4">
