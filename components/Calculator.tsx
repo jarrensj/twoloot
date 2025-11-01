@@ -3,6 +3,9 @@
 import { useState, useEffect } from 'react';
 import CoinGeckoAttribution from './CoinGeckoAttribution';
 import Image from 'next/image';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Separator } from './ui/separator';
+import { Skeleton } from './ui/skeleton';
 
 type PriceState = number | null;
 
@@ -83,45 +86,62 @@ const Calculator = () => {
 
   return (
     <>
-      <div className="mx-auto px-6 py-8 mb-6 bg-white rounded-xl shadow-lg max-w-xl border border-gray-200">
-        {isLoading ? (
-          <div className="flex justify-center items-center">
-            <p className="text-lg text-blue-600">Loading...</p>
-          </div>
-        ) : error ? (
-          <div className="text-center">
-            <p className="text-lg text-red-500">{error}</p>
-          </div>
-        ) : (
-          <>
-            {getSortedCoins().map((coin) => (
-              <div key={coin.id} className="space-y-4 pt-4 border-t border-gray-100">
-                <div className="flex items-center space-x-4">
-                  <Image src={coin.image} alt={coin.id} width={60} height={60} className="rounded-md" />
-                  <div className="flex flex-col">
-                    <span className="text-xl font-semibold text-gray-800">{coin.id}</span>
-                    <span className="text-md text-gray-500">{coin.allocation.toLocaleString()} ${coin.id}</span>
-                  </div>
-                </div>
-                <div>
-                  <p className="text-md text-gray-600">
-                    {coin.id}: <span className="font-semibold">${coin.price}</span>
-                  </p>
-                  <p className="text-lg text-green-500 font-bold">
-                    ${((coin.price ?? 0) * coin.allocation).toFixed(2)}
-                  </p>
-                </div>
-              </div>
-            ))}
-            <div className="pt-8 border-t border-gray-100">
-            <div className="text-center">
-              <span className="text-xl font-semibold text-gray-800">Total Value</span>
-              <p className="text-2xl text-green-500 font-bold mt-2">${totalValue()}</p>
+      <Card className="mx-auto mb-6 max-w-xl">
+        <CardContent className="pt-6">
+          {isLoading ? (
+            <div className="space-y-4">
+              <Skeleton className="h-20 w-full" />
+              <Skeleton className="h-20 w-full" />
+              <Skeleton className="h-20 w-full" />
+              <Skeleton className="h-20 w-full" />
             </div>
-          </div>
-          </>
-        )}
-      </div>
+          ) : error ? (
+            <div className="text-center py-8">
+              <p className="text-lg text-destructive">{error}</p>
+            </div>
+          ) : (
+            <>
+              <div className="space-y-6">
+                {getSortedCoins().map((coin, index) => (
+                  <div key={coin.id}>
+                    {index > 0 && <Separator className="mb-6" />}
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-4">
+                        <Image 
+                          src={coin.image} 
+                          alt={coin.id} 
+                          width={60} 
+                          height={60} 
+                          className="rounded-md border" 
+                        />
+                        <div className="flex flex-col flex-1">
+                          <span className="text-xl font-semibold capitalize">{coin.id}</span>
+                          <span className="text-sm text-muted-foreground">
+                            {coin.allocation.toLocaleString()} ${coin.id}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="pl-[76px]">
+                        <p className="text-sm text-muted-foreground">
+                          Price: <span className="font-semibold text-foreground">${coin.price}</span>
+                        </p>
+                        <p className="text-xl font-bold text-green-600">
+                          ${((coin.price ?? 0) * coin.allocation).toFixed(2)}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <Separator className="my-6" />
+              <div className="text-center pt-2">
+                <CardTitle className="text-xl mb-2">Total Value</CardTitle>
+                <p className="text-3xl font-bold text-green-600">${totalValue()}</p>
+              </div>
+            </>
+          )}
+        </CardContent>
+      </Card>
       <CoinGeckoAttribution />
     </>
   );
