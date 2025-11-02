@@ -2,34 +2,43 @@ import Redemptions from "@/components/Redemptions";
 import Footer from "@/components/Footer";
 import Banner from "@/components/Banner";
 import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 
 export default function RedemptionsPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-gray-50">
+    <div className="flex min-h-screen flex-col">
       <Banner 
         text="missing anything? let us know"
         href="https://discord.gg/omakase"
         isExternal={true}
       />
-      <main className="flex flex-col items-center p-10 rounded-lg shadow-lg bg-white m-4">
-        <Link 
-          href="/" 
-          className="self-start mb-4 text-blue-600 hover:text-blue-800 hover:underline font-medium"
-        >
-          ← Back to Home
-        </Link>
-        <h1 className="text-5xl font-bold text-gray-800 mb-4">Redemptions / Campaigns</h1>
-        <p className="text-xl text-center text-gray-700 mb-2">
-          Redemptions and campaigns available for Seeker holders.
-        </p>
-        <p className="text-md text-center text-gray-600 mb-1">
-          Disclaimer: You are responsible for your own actions and decisions.
-        </p>
-        <p className="text-sm text-center text-gray-500 mb-6">
-          We are not responsible for third-party links or redemption terms. Always verify sources. Everything is at your own risk. We are not liable for any losses or damages.
-        </p>
+      <main className="flex-1 container mx-auto px-4 py-10">
+        <Card className="max-w-4xl mx-auto">
+          <CardContent className="pt-6">
+            <Link href="/">
+              <Button variant="ghost" size="sm" className="mb-6">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Home
+              </Button>
+            </Link>
+            <div className="text-center mb-8">
+              <h1 className="text-5xl font-bold mb-4">Redemptions / Campaigns</h1>
+              <p className="text-xl mb-3">
+                Redemptions and campaigns available for Seeker holders.
+              </p>
+              <p className="text-sm text-muted-foreground mb-2">
+                Disclaimer: You are responsible for your own actions and decisions.
+              </p>
+              <p className="text-xs text-muted-foreground">
+                We are not responsible for third-party links or redemption terms. Always verify sources. Everything is at your own risk. We are not liable for any losses or damages.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+        <Redemptions />
       </main>
-      <Redemptions />
       <Footer />
     </div>
   );

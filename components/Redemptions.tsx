@@ -1,4 +1,8 @@
 import React from 'react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
+import { Badge } from './ui/badge';
+import { ExternalLink } from 'lucide-react';
+import Link from 'next/link';
 
 interface Redemption {
   title: string;
@@ -23,40 +27,37 @@ export const hasActiveRedemptions = () => {
 const Redemptions = () => {
 
   return (
-    <div className="w-full max-w-4xl mx-auto mt-8 mb-8">
-      <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Active Redemptions</h2>
+    <div className="w-full max-w-4xl mx-auto mt-8 mb-8 px-4">
+      <h2 className="text-3xl font-bold mb-6 text-center">Active Redemptions</h2>
       <div className="space-y-4">
         {redemptions.map((redemption, index) => (
-          <div 
-            key={index} 
-            className="bg-white rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-200"
-          >
-            <div className="flex items-start justify-between">
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-2">
-                  <h3 className="text-xl font-semibold text-gray-800">
-                    {redemption.title}
-                  </h3>
-                  {redemption.isActive && (
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                      Active
-                    </span>
-                  )}
-                </div>
-                <p className="text-gray-600 mb-3">
-                  {redemption.description}
-                </p>
-                <a 
-                  href={redemption.sourceUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm hover:underline transition-colors duration-200"
-                >
-                  View Source →
-                </a>
+          <Card key={index} className="shadow-xl hover:shadow-2xl transition-shadow duration-200">
+            <CardHeader>
+              <div className="flex items-center gap-3">
+                <CardTitle className="text-xl">
+                  {redemption.title}
+                </CardTitle>
+                {redemption.isActive && (
+                  <Badge variant="success">
+                    Active
+                  </Badge>
+                )}
               </div>
-            </div>
-          </div>
+              <CardDescription className="mt-2">
+                {redemption.description}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Link 
+                href={redemption.sourceUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-primary hover:underline font-medium text-sm transition-colors"
+              >
+                View Source <ExternalLink className="h-3 w-3" />
+              </Link>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </div>
