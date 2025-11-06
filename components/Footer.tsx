@@ -8,12 +8,13 @@ import { Separator } from './ui/separator';
 const Footer = () => {
   const pathname = usePathname();
   const isOnActivationsPage = pathname === '/activations';
+  const isOnHomePage = pathname === '/';
 
   return (
     <footer className="w-full py-6 px-4 mt-8 bg-muted/50">
       <div className="max-w-4xl mx-auto text-center">
         <div className="space-y-3 text-xs text-muted-foreground">
-          {!isOnActivationsPage && (
+          {!isOnActivationsPage && !isOnHomePage && (
             <>
               <div className="mb-4">
                 <Link 

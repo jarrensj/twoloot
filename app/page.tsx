@@ -4,6 +4,9 @@ import Banner from "@/components/Banner";
 import { hasActiveRedemptions } from "@/components/Redemptions";
 import { hasActiveActivations } from "@/components/Activations";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Zap } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   const showRedemptionsBanner = hasActiveRedemptions();
@@ -30,7 +33,17 @@ export default function Home() {
       />
       <main className="flex-1 container mx-auto px-4 py-10">
         <Card className="max-w-4xl mx-auto">
-          <CardContent className="pt-6">
+          <CardContent className="pt-6 relative">
+            {hasActiveItems && (
+              <div className="absolute top-4 right-4">
+                <Link href="/activations">
+                  <Button variant="outline" size="sm" className="gap-2">
+                    <Zap className="h-4 w-4" />
+                    Active Activations & Redemptions
+                  </Button>
+                </Link>
+              </div>
+            )}
             <div className="text-center mb-8">
               <h1 className="text-5xl font-bold mb-4">Two Loot</h1>
               <p className="text-xl mb-3">
