@@ -33,7 +33,7 @@ export default function CampaignsPage() {
                 Disclaimer: You are responsible for your own actions and decisions.
               </p>
               <p className="text-xs text-muted-foreground">
-                We are not responsible for third-party links, campaign terms, or redemption terms. Always verify sources and information independently. Everything is at your own risk. We are not liable for any losses, damages, or issues that may arise.
+                We are not responsible for third-party links or redemption terms. Always verify sources. Everything is at your own risk. We are not liable for any losses or damages. Actions taken on other websites are not our responsibility.
               </p>
             </div>
           </CardContent>
