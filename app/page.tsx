@@ -2,17 +2,34 @@ import Calculator from "@/components/Calculator";
 import Footer from "@/components/Footer";
 import Banner from "@/components/Banner";
 import { hasActiveRedemptions } from "@/components/Redemptions";
+import { hasActiveActivations } from "@/components/Activations";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function Home() {
   const showRedemptionsBanner = hasActiveRedemptions();
+  const showActivationsBanner = hasActiveActivations();
+
+  // Prioritize activations, then redemptions, then default
+  const bannerText = showActivationsBanner 
+    ? "⚡ Active Activations Available - Click to View" 
+    : showRedemptionsBanner 
+      ? "🎁 Active Redemptions Available - Click to View" 
+      : "missing anything? let us know";
+  
+  const bannerHref = showActivationsBanner 
+    ? "/activations" 
+    : showRedemptionsBanner 
+      ? "/redemptions" 
+      : "https://discord.gg/omakase";
+  
+  const bannerIsExternal = !showActivationsBanner && !showRedemptionsBanner;
 
   return (
     <div className="flex min-h-screen flex-col">
       <Banner 
-        text={showRedemptionsBanner ? "🎁 Active Redemptions Available - Click to View" : "missing anything? let us know"}
-        href={showRedemptionsBanner ? "/redemptions" : "https://discord.gg/omakase"}
-        isExternal={!showRedemptionsBanner}
+        text={bannerText}
+        href={bannerHref}
+        isExternal={bannerIsExternal}
       />
       <main className="flex-1 container mx-auto px-4 py-10">
         <Card className="max-w-4xl mx-auto">
