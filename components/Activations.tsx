@@ -13,8 +13,8 @@ interface Activation {
 
 export const activations: Activation[] = [
   {
-    title: "Solana Mobile Chapter 2 Activation",
-    description: "Activation for Solana Mobile Chapter 2 - Seeker holders",
+    title: "ORE app available on Solana Mobile app store",
+    description: "Official Solana Mobile Twitter account mentions https://x.com/OREsupply",
     sourceUrl: "https://x.com/solanamobile/status/1986116929720099119",
     isActive: true
   }
