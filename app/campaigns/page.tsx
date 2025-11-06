@@ -1,5 +1,5 @@
 import Redemptions from "@/components/Redemptions";
-import Activations from "@/components/Activations";
+import Campaigns from "@/components/Campaigns";
 import Footer from "@/components/Footer";
 import Banner from "@/components/Banner";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 
-export default function RedemptionsPage() {
+export default function CampaignsPage() {
   return (
     <div className="flex min-h-screen flex-col">
       <Banner 
@@ -25,20 +25,20 @@ export default function RedemptionsPage() {
               </Button>
             </Link>
             <div className="text-center mb-8">
-              <h1 className="text-5xl font-bold mb-4">Activations & Redemptions</h1>
+              <h1 className="text-5xl font-bold mb-4">Campaigns & Redemptions</h1>
               <p className="text-xl mb-3">
-                Activations, redemptions, and campaigns available for Seeker holders.
+                Campaigns and redemptions available for Seeker holders.
               </p>
               <p className="text-sm text-muted-foreground mb-2">
                 Disclaimer: You are responsible for your own actions and decisions.
               </p>
               <p className="text-xs text-muted-foreground">
-                We are not responsible for third-party links, activation terms, or redemption terms. Always verify sources and information independently. Everything is at your own risk. We are not liable for any losses, damages, or issues that may arise.
+                We are not responsible for third-party links, campaign terms, or redemption terms. Always verify sources and information independently. Everything is at your own risk. We are not liable for any losses, damages, or issues that may arise.
               </p>
             </div>
           </CardContent>
         </Card>
-        <Activations />
+        <Campaigns />
         <Redemptions />
       </main>
       <Footer />

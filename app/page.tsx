@@ -2,7 +2,7 @@ import Calculator from "@/components/Calculator";
 import Footer from "@/components/Footer";
 import Banner from "@/components/Banner";
 import { hasActiveRedemptions } from "@/components/Redemptions";
-import { hasActiveActivations } from "@/components/Activations";
+import { hasActiveCampaigns } from "@/components/Campaigns";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Zap } from "lucide-react";
@@ -10,16 +10,16 @@ import Link from "next/link";
 
 export default function Home() {
   const showRedemptionsBanner = hasActiveRedemptions();
-  const showActivationsBanner = hasActiveActivations();
-  const hasActiveItems = showActivationsBanner || showRedemptionsBanner;
+  const showCampaignsBanner = hasActiveCampaigns();
+  const hasActiveItems = showCampaignsBanner || showRedemptionsBanner;
 
   // Show combined banner if there are any active items
   const bannerText = hasActiveItems
-    ? "⚡ Active Activations & Redemptions - Click to View" 
+    ? "⚡ Active Campaigns & Redemptions - Click to View" 
     : "missing anything? let us know";
   
   const bannerHref = hasActiveItems
-    ? "/activations" 
+    ? "/campaigns" 
     : "https://discord.gg/omakase";
   
   const bannerIsExternal = !hasActiveItems;
@@ -36,10 +36,10 @@ export default function Home() {
           <CardContent className="pt-6 relative">
             {hasActiveItems && (
               <div className="absolute top-4 right-4">
-                <Link href="/activations">
+                <Link href="/campaigns">
                   <Button variant="outline" size="sm" className="gap-2">
                     <Zap className="h-4 w-4" />
-                    Active Activations & Redemptions
+                    Active Campaigns & Redemptions
                   </Button>
                 </Link>
               </div>

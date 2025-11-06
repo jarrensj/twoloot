@@ -7,21 +7,21 @@ import { Separator } from './ui/separator';
 
 const Footer = () => {
   const pathname = usePathname();
-  const isOnActivationsPage = pathname === '/activations';
+  const isOnCampaignsPage = pathname === '/campaigns';
   const isOnHomePage = pathname === '/';
 
   return (
     <footer className="w-full py-6 px-4 mt-8 bg-muted/50">
       <div className="max-w-4xl mx-auto text-center">
         <div className="space-y-3 text-xs text-muted-foreground">
-          {!isOnActivationsPage && !isOnHomePage && (
+          {!isOnCampaignsPage && !isOnHomePage && (
             <>
               <div className="mb-4">
                 <Link 
-                  href="/activations" 
+                  href="/campaigns" 
                   className="text-sm font-medium text-primary hover:underline inline-flex items-center gap-1"
                 >
-                  View Activations & Redemptions →
+                  View Campaigns & Redemptions →
                 </Link>
               </div>
               <Separator className="my-4" />

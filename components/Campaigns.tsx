@@ -4,14 +4,14 @@ import { Badge } from './ui/badge';
 import { ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 
-interface Activation {
+interface Campaign {
   title: string;
   description: string;
   sourceUrl: string;
   isActive: boolean;
 }
 
-export const activations: Activation[] = [
+export const campaigns: Campaign[] = [
   {
     title: "ORE app available on Solana Mobile app store",
     description: "Official Solana Mobile Twitter account mentions https://x.com/OREsupply",
@@ -20,36 +20,36 @@ export const activations: Activation[] = [
   }
 ];
 
-export const hasActiveActivations = () => {
-  return activations.some(a => a.isActive);
+export const hasActiveCampaigns = () => {
+  return campaigns.some(c => c.isActive);
 };
 
-const Activations = () => {
+const Campaigns = () => {
 
   return (
     <div className="w-full max-w-4xl mx-auto mt-8 mb-8 px-4">
-      <h2 className="text-3xl font-bold mb-6 text-center">Active Activations</h2>
+      <h2 className="text-3xl font-bold mb-6 text-center">Active Campaigns</h2>
       <div className="space-y-4">
-        {activations.map((activation, index) => (
+        {campaigns.map((campaign, index) => (
           <Card key={index} className="shadow-xl hover:shadow-2xl transition-shadow duration-200">
             <CardHeader>
               <div className="flex items-center gap-3">
                 <CardTitle className="text-xl">
-                  {activation.title}
+                  {campaign.title}
                 </CardTitle>
-                {activation.isActive && (
+                {campaign.isActive && (
                   <Badge variant="success">
                     Active
                   </Badge>
                 )}
               </div>
               <CardDescription className="mt-2">
-                {activation.description}
+                {campaign.description}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <Link 
-                href={activation.sourceUrl} 
+                href={campaign.sourceUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 text-primary hover:underline font-medium text-sm transition-colors"
@@ -64,4 +64,4 @@ const Activations = () => {
   );
 };
 
-export default Activations;
+export default Campaigns;
