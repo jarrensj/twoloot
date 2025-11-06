@@ -8,21 +8,18 @@ import { Card, CardContent } from "@/components/ui/card";
 export default function Home() {
   const showRedemptionsBanner = hasActiveRedemptions();
   const showActivationsBanner = hasActiveActivations();
+  const hasActiveItems = showActivationsBanner || showRedemptionsBanner;
 
-  // Prioritize activations, then redemptions, then default
-  const bannerText = showActivationsBanner 
-    ? "⚡ Active Activations Available - Click to View" 
-    : showRedemptionsBanner 
-      ? "🎁 Active Redemptions Available - Click to View" 
-      : "missing anything? let us know";
+  // Show combined banner if there are any active items
+  const bannerText = hasActiveItems
+    ? "⚡ Active Activations & Redemptions - Click to View" 
+    : "missing anything? let us know";
   
-  const bannerHref = showActivationsBanner 
-    ? "/activations" 
-    : showRedemptionsBanner 
-      ? "/redemptions" 
-      : "https://discord.gg/omakase";
+  const bannerHref = hasActiveItems
+    ? "/redemptions" 
+    : "https://discord.gg/omakase";
   
-  const bannerIsExternal = !showActivationsBanner && !showRedemptionsBanner;
+  const bannerIsExternal = !hasActiveItems;
 
   return (
     <div className="flex min-h-screen flex-col">
