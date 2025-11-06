@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="space-y-3 text-xs text-muted-foreground">
           <div className="mb-4">
             <Link 
-              href="/redemptions" 
+              href="/activations" 
               className="text-sm font-medium text-primary hover:underline inline-flex items-center gap-1"
             >
               View Activations & Redemptions →

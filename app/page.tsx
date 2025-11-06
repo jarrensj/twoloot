@@ -16,7 +16,7 @@ export default function Home() {
     : "missing anything? let us know";
   
   const bannerHref = hasActiveItems
-    ? "/redemptions" 
+    ? "/activations" 
     : "https://discord.gg/omakase";
   
   const bannerIsExternal = !hasActiveItems;
