@@ -5,7 +5,6 @@ import { hasActiveRedemptions } from "@/components/Redemptions";
 import { hasActiveCampaigns } from "@/components/Campaigns";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Zap } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
@@ -15,7 +14,7 @@ export default function Home() {
 
   // Show combined banner if there are any active items
   const bannerText = hasActiveItems
-    ? "⚡ Active Campaigns & Redemptions - Click to View" 
+    ? "Active Campaigns & Redemptions - Click to View" 
     : "missing anything? let us know";
   
   const bannerHref = hasActiveItems
@@ -37,8 +36,7 @@ export default function Home() {
             {hasActiveItems && (
               <div className="absolute top-4 right-4">
                 <Link href="/campaigns">
-                  <Button variant="outline" size="sm" className="gap-2">
-                    <Zap className="h-4 w-4" />
+                  <Button variant="outline" size="sm">
                     Active Campaigns & Redemptions
                   </Button>
                 </Link>
