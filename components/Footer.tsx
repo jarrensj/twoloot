@@ -17,7 +17,7 @@ const Footer = () => {
             If you see anything incorrect or something that needs to be updated, please <a href="mailto:omakasemoney@gmail.com" className="text-blue-600 hover:text-blue-800">let us know</a>.
           </p>
           <p className="font-medium text-gray-700 mt-4">
-            made by <a href="https://omakasemoney.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">omaka$e</a>
+            made by <Link href="https://omakasemoney.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">omaka$e</Link>
           </p>
         </div>
       </div>
