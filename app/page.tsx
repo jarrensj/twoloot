@@ -2,21 +2,46 @@ import Calculator from "@/components/Calculator";
 import Footer from "@/components/Footer";
 import Banner from "@/components/Banner";
 import { hasActiveRedemptions } from "@/components/Redemptions";
+import { hasActiveCampaigns } from "@/components/Campaigns";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Home() {
   const showRedemptionsBanner = hasActiveRedemptions();
+  const showCampaignsBanner = hasActiveCampaigns();
+  const hasActiveItems = showCampaignsBanner || showRedemptionsBanner;
+
+  // Show combined banner if there are any active items
+  const bannerText = hasActiveItems
+    ? "Active Campaigns & Redemptions - Click to View" 
+    : "missing anything? let us know";
+  
+  const bannerHref = hasActiveItems
+    ? "/campaigns" 
+    : "https://discord.gg/omakase";
+  
+  const bannerIsExternal = !hasActiveItems;
 
   return (
     <div className="flex min-h-screen flex-col">
       <Banner 
-        text={showRedemptionsBanner ? "🎁 Active Redemptions Available - Click to View" : "missing anything? let us know"}
-        href={showRedemptionsBanner ? "/redemptions" : "https://discord.gg/omakase"}
-        isExternal={!showRedemptionsBanner}
+        text={bannerText}
+        href={bannerHref}
+        isExternal={bannerIsExternal}
       />
       <main className="flex-1 container mx-auto px-4 py-10">
         <Card className="max-w-4xl mx-auto">
-          <CardContent className="pt-6">
+          <CardContent className="pt-6 relative">
+            {hasActiveItems && (
+              <div className="absolute top-4 right-4">
+                <Link href="/campaigns">
+                  <Button variant="outline" size="sm">
+                    Active Campaigns & Redemptions
+                  </Button>
+                </Link>
+              </div>
+            )}
             <div className="text-center mb-8">
               <h1 className="text-5xl font-bold mb-4">Two Loot</h1>
               <p className="text-xl mb-3">

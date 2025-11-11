@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from "next/link";
 import { Separator } from './ui/separator';
 
 const Footer = () => {
